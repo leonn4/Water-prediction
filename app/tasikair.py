@@ -79,11 +79,25 @@ plt.scatter(df_scenario['Total_Customer'], df_scenario['Predicted_Volume_Water']
 plt.gca().ticklabel_format(style='plain', axis='x')  # Disable scientific notation on X axis
 plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{int(x):,}'))  # Format Y axis as regular numbers (no decimals)
 
+# Visualizing predicted water volume if all residents become customers
+plt.figure(figsize=(10, 6))
+
+# Scatter plot for predicted water volume based on the number of customers
+plt.scatter(df_scenario['Total_Customer'], df_scenario['Predicted_Volume_Water'], color='green', label='Scenario Prediction', linewidth=2)
+
+# Adding a line to connect the prediction points
+plt.plot(df_scenario['Total_Customer'], df_scenario['Predicted_Volume_Water'], color='green', linewidth=2)
+
+# Setting proper x and y axis values
+plt.gca().ticklabel_format(style='plain', axis='x')  # Disable scientific notation on X axis
+plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{int(x):,}'))  # Format Y axis as regular numbers (no decimals)
+
 plt.title('Predicted Water Volume If All Residents Become Customers')
 plt.xlabel('Number of Customers (Equal to Number of Residents)')
 plt.ylabel('Water Volume (m³)')
 plt.legend()
 plt.show()
+
 
 # 2. Visualizing comparison of non-customer residents and existing customers
 plt.figure(figsize=(10, 6))
